@@ -1,0 +1,41 @@
+<template>
+	<div class="cont animated fadeIn faster">
+		<div class="box">
+			<p class="title is-6 is-centered">Contact Query Tool</p>
+		</div>
+		<div class="box is-centered" class.bind="showInput ? 'hidden' : ''">
+			<p class="title is-6">Please Select a Customer</p>
+		</div>
+		<div class="box is-centered" class.bind="showInput ? '' : 'hidden'">
+			<p class="title is-6 is-centered">Current Customer: <span class="current-customer">${customer.customerName}</span></p>
+			<p class="margin-top-extra">Enter an email address:</p>
+			<form>
+				<input class="input margin-auto" value.bind="email" placeholder="tj.southern@salesfusion.com"></input>
+				<button class="submit-button button" click.delegate="runCqt()">Submit</button>
+			</form>
+		</div>
+
+  <div  click.trigger="exportToExcel('exportTable','Record Inforamtion')" class.bind="showResults ? '' : 'hidden'" class="button download-to-excel">
+    <i class="fas fa-file-excel"></i>
+  </div>
+
+	<div class="box is-centered animated fadeIn faster" class.bind="errorMessage ? '' : 'hidden'">
+		<p class="title is-6">${errorMessage}</p>
+	</div>
+
+</div>
+
+	<div class="animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
+		<table id="exportTable" class="table is-striped is-narrow animated fadeIn faster">
+			<thead class="handle clickable" click.trigger="dragColumn()">
+				<tr>
+					<th repeat.for="key of keys">${key}</th>
+				</tr>
+			</thead>
+			<tr repeat.for="result of results">
+				<td repeat.for="item of result">${item}</td>
+			</tr>
+		</table>
+	</div>
+
+</template>

@@ -1,0 +1,171 @@
+<template>
+
+    <div class="cont is-centered">
+
+        <div class="box animated fadeIn faster">
+            <p class="title is-6 is-centered">Campaign Monitor</p>
+        </div>
+        <div class="box is-centered animated fadeIn faster" class.bind="showInput ? 'hidden' : ''">
+            <p class="title is-6">Please Select a Customer</p>
+        </div>
+        <div class="box is-centered" class.bind="showInput ? '' : 'hidden'">
+            <p class="title is-6 is-centered">Current Customer: <span class="current-customer">${customer.customerName}</span></p>
+            <p class="margin-top-extra">Enter a Campaign ID:</p>
+            <form>
+                <input class="input margin-auto" type="number" value.bind="inputVal" placeholder="123">
+                <button class="submit-button button" click.trigger="init()">Submit</button>
+            </form>
+        </div>
+
+        <article class="message is-danger is-centered animated fadeIn faster" class.bind="showExists ? '' : 'hidden'">
+            <div class="message-header">
+                <p>The Specified campaign does not exist.</p>
+            </div>
+        </article>
+
+        <div class="animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
+
+          <div class="box animated fadeIn faster" class.bind="results.message ? 'hidden' : ''">
+            <div class="" class.bind="showRecipientCount ? '' : 'hidden'">
+              <span class="tool-text">Auto Refresh:</span>
+              <button class="button toggle-button" click.delegate="controlTimer()" class.bind="timerOn ? 'is-success' : 'is-danger'">${timerButton}</button>
+              <span class="tool-text">Seconds to Refresh:</span>
+              <input class="num-input input" value="15" min="15" class="input" type="number" />
+            </div>
+
+            <div class="animated fadeIn faster" class.bind="showRecipientCount ? 'hidden' : ''">
+                <p class="title is-6">Retrieving Recipient Count...</p>
+            </div>
+
+              <div class="animated fadeIn faster" class.bind="showPercentage ? '' : 'hidden'">
+                  <p class="title is-6 margin-top-extra animated fadeIn faster">Percentage Sent: ${percentage}</p>
+                  <progress class="progress margin-top extra is-success animated fadeIn faster" value="${percentage}" max="100"></progress>
+              </div>
+          </div>
+
+            <!--BEGIN CAMPAIGN OVERVIEWS -->
+            <div class="card margin-top">
+                <header class="card-header" click.delegate="genericToggle('showOverView')">
+                    <p class="card-header-title">
+                        Campaign Overview:
+                    </p>
+                    <a class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+                    </a>
+                </header>
+                <div class="card-content animated fadeIn faster" class.bind="showOverView ? '' : 'hidden'">
+                    <div class="content">
+
+                      <!--BEGIN Campaign Message -->
+                        <article class="message is-warning is-centered" class.bind="results.message ? '' : 'hidden'">
+                            <div class="message-header">
+                                <p>${results.message}</p>
+                            </div>
+                        </article>
+                        <!--END Campaign Message -->
+                        <!--BEGIN Campaign OverView Message -->
+                        <table class="table">
+                            <thead>
+                                <th>Campaign Name</th>
+                                <th>Subject</th>
+                                <th>PostDate</th>
+                                <th>Status</th>
+                                <th>Tool</th>
+                                <th class.bind="campaignCount ? '' : 'hidden'">Count</th>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>${results.campaignerOverview[0].campaignname}</td>
+                                    <td>${results.campaignerOverview[0].subject}</td>
+                                    <td>${results.campaignerOverview[0].postdate}</td>
+                                    <td>${results.campaignerOverview[0].status}</td>
+                                    <td>${results.campaignerOverview[0].tool}</td>
+                                    <td class.bind="campaignCount ? '' : 'hidden'">${campaignCount}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--END Campaign OverView Message -->
+                        <!--BEGIN Campaigner Actual Counts -->
+                        <div class="table-cont">
+                            <p class="title is-6 margin-top-extra"> Campaigner Actual Counts</p>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>Status</th>
+                                        <th repeat.for="result of results.campaignerActualCount">${result.status}</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Count</th>
+                                        <td repeat.for="result of results.campaignerActualCount" class="counts">${result.count}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--END Campaigner Actual Counts -->
+                        <!--BEGIN Campaigner Staging Counts -->
+                        <div class="table-cont">
+                            <p class="title is-6 margin-top-extra">Campaigner Staging Counts</p>
+                            <table class="table">
+                                <thead>
+                                    <th>Stage 1</th>
+                                    <th>Stage 2</th>
+                                    <th>Stage 3</th>
+                                </thead>
+                                <tbody>
+                                    <tr repeat.for="result of results.campaignerStagingCount">
+                                        <td>${result.Stage1}</td>
+                                        <td class="total-recipients">${result.Stage2}</td>
+                                        <td>${result.Stage3}</td>
+                                    </tr>
+                                    <tr class.bind="results.campaignerStagingCount[0].Stage1 ? 'hidden' : ''">
+                                        <td>Campaign is not staging</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--END Campaigner Staging Counts -->
+                    </div>
+                </div>
+            </div>
+            <!--END CAMPAIGN OVERVIEWS -->
+
+            <!--BEGIN LISTS -->
+            <div class="card margin-top">
+                <header class="card-header" click.trigger="genericToggle('showLists')">
+                    <p class="card-header-title">
+                        Campaigner Lists:
+                    </p>
+                    <a class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+                    </a>
+                </header>
+                <div class="card-content animated fadeIn faster" class.bind="showLists ? '' : 'hidden'">
+                    <div class="content">
+                        <table class="table ">
+                            <thead>
+                                <th>List ID</th>
+                                <th>List Type</th>
+                                <th>List Action</th>
+                                <th>CreatedDate</th>
+                            </thead>
+                            <tbody>
+                                <tr repeat.for="result of results.campaignerLists">
+                                    <td>${result.ListID}</td>
+                                    <td>${result.ListType}</td>
+                                    <td>${result.ListAction}</td>
+                                    <td>${result.CreatedDate}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--END CAMPAIGNER LISTS -->
+        </div>
+
+</template>

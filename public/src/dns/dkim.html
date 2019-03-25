@@ -1,0 +1,146 @@
+<template>
+    <div class="cont animated fadeIn faster">
+
+        <div class="box">
+          <p class="title is-6 is-centered">SPF/DKIM Checker</p>
+        </div>
+
+        <!-- FORM FOR TAKING DOMAIN INPUT -->
+        <div class="box">
+          <form>
+            <div class="dkim-cont is-centered">
+                <p class="title is-6 ">Enter Your Domain:</p>
+                <input class="input" value.bind="domain" placeholder="salesfusion.com">
+                <button class="submit-button button" click.delegate="compareSpfDkim(domain)">Submit</button>
+            </div>
+        </form>
+        </div>
+        <!-- END FORM FOR TAKING DOMAIN INPUT-->
+
+        <div class="card" class.bind="showResults ? '' : 'hidden'">
+          <header class="card-header">
+            <p class="card-header-title" click.delegate="genericToggle('showAllText')">
+              All Text Records
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content" class.bind="showAllText ? '' : 'hidden'">
+            <div class="content">
+              <p repeat.for="texts of dkim.allText">${texts}</p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="card" class.bind="showResults ? '' : 'hidden'">
+          <header class="card-header">
+            <p class="card-header-title" click.delegate="genericToggle('showCheckerResults')">
+              Checker Results:
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </header>
+          <div class="card-content" class.bind="showCheckerResults ? '' : 'hidden'">
+            <div class="content">
+              <!-- DISPLAY LONG DKIM RESULTS-->
+              <div class="animated fadeIn faster">
+                  <article class="message has-centered-text" class.bind="dkim.dkimLongTF ? 'is-success' : 'is-danger'">
+                      <div class="message-header">
+                          <p>DKIM Long:</p>
+                      </div>
+                      <div class="message-body">
+                          <p class="is-bold">${dkim.messageLong}</p>
+                          <p class="">${dkim.dkimLong}</p>
+                      </div>
+                  </article>
+
+                  <!-- DISPLAY SHORT DKIM RESULTS -->
+                  <article class="message has-centered-text" class.bind="dkim.dkimShortTF ? 'is-success' : 'is-danger'">
+                      <div class="message-header">
+                          <p>DKIM Short:</p>
+                      </div>
+                      <div class="message-body">
+                          <p class="is-bold">${dkim.messageShort}</p>
+                          <p class="">${dkim.dkimShort}</p>
+                      </div>
+                  </article>
+
+
+                  <!-- DISPLAY SPF RESULTS -->
+                  <p class="is-warning title is-5 is-centered">${spfMessage}</p>
+                  <article repeat.for="spf of spfs" class="message has-centered-text" class.bind="tfSpf ? 'is-success' : 'is-danger'">
+                      <div class="message-header">
+                          <p>SPF:</p>
+                      </div>
+                      <div class="message-body">
+                          <p class="is-bold">${spf.message}</p>
+                          <p class="">${spf.results}</p>
+                      </div>
+                  </article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SPF AND SKIM EXAMPLES -->
+
+            <div class="card">
+              <header class="card-header" >
+                <p class="card-header-title" click.delegate="genericToggle('showExamples')">
+                  Examples
+                </p>
+                <a class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </a>
+          </header>
+
+  <div class="card-content" class.bind="showExamples ? '' : 'hidden'">
+    <div class="content">
+      <article class="message has-centered-text">
+          <div class="message-header">
+              <p>Domain Keys: </p>
+          </div>
+          <div class="message-body">
+              <p><span class="title is-6 title-no-margin">DKIM Long:</span> msgapp._domainkey.${domain}</p>
+              <p><span class="title is-6 title-no-margin">DKIM Short:</span> _domainkey.${domain}</p>
+          </div>
+      </article>
+
+      <article class="message has-centered-text">
+          <div class="message-header">
+              <p>DKIM Examples: </p>
+          </div>
+          <div class="message-body">
+              <p class="title is-6 title-no-margin">DKIM Long:</p>
+              <p class="margin-bottom">k=rsa;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDasswtodxAxfHPmN5hipc7y77k5sGjdO5Pf/4kUZ2wuBd9gxCIpnsTjKS88eXkCf0LHaRvmYwNgECQslOAqdirJIqtM08Hym609p1IbV1+eEHXWU1VTLmDDBmEKrG9nl1nrchZUGaIXzDzlq8kZL+pkvQoIid/DoFHW3GbpN2XvwIDAQAB;</p>
+              <p class="title is-6 title-no-margin">DKIM Short:</p>
+              <p class="margin-bottom">t=y; o=~;'</p>
+          </div>
+      </article>
+
+      <article class="message has-centered-text">
+          <div class="message-header">
+              <p>SPF Example </p>
+          </div>
+          <div class="message-body">
+              <p class="title is-6 title-no-margin">SPF:</p>
+              <p class="">v=spf1 mx include:auth.msgapp.com ~all</p>
+          </div>
+      </article>
+
+    </div>
+  </div>
+
+</div>
+
+</template>

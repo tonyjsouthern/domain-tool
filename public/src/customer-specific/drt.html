@@ -1,0 +1,77 @@
+<template>
+   <div class="cont">
+      <div class="box animated fadeIn faster">
+         <p class="title is-6 is-centered">Deliverability Reset Tool</p>
+      </div>
+      <div class="box is-centered animated fadeIn faster" class.bind="showInput ? '' : 'hidden'">
+         <p class="title is-6">Please Select a Customer</p>
+      </div>
+      <div class="box is-centered animated fadeIn faster" class.bind="showInput ? 'hidden' : ''">
+         <p class="title is-6 is-centered">Current Customer: <span class="current-customer">${customer.customerName}</span></p>
+         <p class="margin-top-extra">Enter an email address:</p>
+         <form>
+            <input class="input margin-auto" value.bind="email" placeholder="tj.southern@salesfusion.com"></input>
+            <button class="submit-button button" click.delegate="runDrtCheck()">Submit</button>
+         </form>
+      </div>
+      <div class="box" class.bind="error ? '' : 'hidden'">
+         <p class="title is-6">${error}</p>
+      </div>
+      <div class="box animated fadeIn faster" class.bind="showResults ? '' : 'hidden'">
+         <table class.bind="showResults ? '' : 'hidden'" class="drt-table table is-striped is-fullwidth   is-narrow animated fadeIn faster">
+            <thead>
+               <th>Check Type:</th>
+               <th>Message:</th>
+               <th>Reset:</th>
+            </thead>
+            <tr>
+               <td class.bind="results.deleted.value ? 'warning-table' : 'true-table'" class="is-bold">Deleted:</td>
+               <td>${results.deleted.message}</td>
+               <td></td>
+            </tr>
+            <tr>
+               <td class.bind="results.emailValidation.value ? 'false-table' : 'true-table'" class="is-bold">Email Validation:</td>
+               <td>${results.emailValidation.message}</td>
+               <td><button class.bind="results.emailValidation.value ? '' : 'hidden'" class="button reset-button emailValidation"
+                 click.trigger="genericUpdates(ResetService.emailValidation, 'emailValidation')">Reset</button></td>
+            </tr>
+            <tr>
+               <td class.bind="results.guardedWatch.value ? 'false-table' : 'true-table'" class="is-bold">Guarded Watch:</td>
+               <td>${results.guardedWatch.message}</td>
+               <td><button class.bind="results.guardedWatch.value ? '' : 'hidden'" class="button reset-button guardedWatch"
+                 click.trigger="genericUpdates(ResetService.guardedWatch, 'guardedWatch')">Reset</button></td>
+            </tr>
+            <tr>
+               <td class.bind="results.supressionList.value ? 'false-table' : 'true-table'" class="is-bold">Supression List:</td>
+               <td>${results.supressionList.message}</td>
+               <td><button class.bind="results.supressionList.value ? '' : 'hidden'" class="button reset-button supressionList"
+                 click.trigger="genericUpdates(ResetService.updateSupression, 'supressionList')">Reset</button></td>
+            </tr>
+            <tr>
+               <td class.bind="results.optOut.value ? 'false-table' : 'true-table'" class="is-bold">Opted Out:</td>
+               <td>${results.optOut.message}</td>
+               <td><button class.bind="results.optOut.value ? '' : 'hidden'" class="button reset-button optOut"
+                 click.trigger="genericUpdates(ResetService.updateOptout, 'optOut')">Reset</button></td>
+            </tr>
+            <tr>
+               <td class.bind="results.systemSoftBounce.value ? 'false-table' : 'true-table'" class="is-bold">Soft Bounces:</td>
+               <td>${results.systemSoftBounce.message}</td>
+               <td><button class.bind="results.systemSoftBounce.value ? '' : 'hidden'" class="button reset-button systemSoftBounce"
+                 click.trigger="genericUpdates(ResetService.updateSoftBounce, 'systemSoftBounce')">Reset</button></td>
+            </tr>
+            <tr>
+               <td class.bind="results.emailDeliveryStatus.value ? 'false-table' : 'true-table'" class="is-bold">Hard Bounces:</td>
+               <td>${results.emailDeliveryStatus.message}</td>
+               <td><button class.bind="results.emailDeliveryStatus.value ? '' : 'hidden'" class="button reset-button emailDeliveryStatus"
+                 click.trigger="genericUpdates(ResetService.updateHardBounce, 'emailDeliveryStatus')">Reset</button></td>
+            </tr>
+            <tr>
+               <td class.bind="results.delStatus.value ? 'false-table' : 'true-table'" class="is-bold">DelStatus:</td>
+               <td>${results.delStatus.message}</td>
+               <td><button class.bind="results.delStatus.value ? '' : 'hidden'" class="button reset-button delStatus"
+                 click.trigger="genericUpdates(ResetService.updateDelstatus, 'delStatus')">Reset</button></td>
+            </tr>
+         </table>
+      </div>
+   </div>
+</template>

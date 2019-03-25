@@ -1,0 +1,140 @@
+<template>
+   <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+         <a class="navbar-item logo-padding" route-href="about">
+         <img class= "logo" src="./src/assets/sflogo.png" width="112" height="28">
+         </a>
+      </div>
+      <div class="navbar-menu">
+         <div class="navbar-start">
+            <a route-href="customer" class="navbar-item">
+            Admin Tool
+            </a>
+
+            <div class="dropdown" class.bind="showDnsDropDown ? 'is-active' : ''">
+                <div class="dropdown-trigger" click.delegate="genericToggle('showDnsDropDown')">
+                    <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span>DNS</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <a route-href="tracking" class="navbar-item" mouseup.trigger="genericToggle('showDnsDropDown')">
+                      Tracking
+                      </a>
+                      <a route-href="dkim" class="navbar-item" mouseup.trigger="genericToggle('showDnsDropDown')">
+                      SPF/DKIM
+                      </a>
+                      <a route-href="cname" class="navbar-item" mouseup.trigger="genericToggle('showDnsDropDown')">
+                      CNAME
+                      </a>
+                      <a route-href="whois" class="navbar-item" mouseup.trigger="genericToggle('showDnsDropDown')">
+                      Who Is
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                        <div class="dropdown" class.bind="showSpecificDropDown ? 'is-active' : ''">
+                            <div class="dropdown-trigger" click.delegate="genericToggle('showSpecificDropDown')">
+                                <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                  <span>Customer Specific</span>
+                                  <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                  </span>
+                                </button>
+                              </div>
+                              <div class="dropdown-menu is-centered" id="dropdown-menu" role="menu">
+                                <div class="dropdown-content">
+                                  <a route-href="route: drt/:slug; params.bind: {slug: selectedCustomer.sql.server +
+                                    '$' +  selectedCustomer.sql.database + '$' + selectedCustomer.customerName + '$' + selectedCustomer.domainName}" class="navbar-item" mouseup.trigger="genericToggle('showSpecificDropDown')">
+                                  Deliverability Reset
+                                  </a>
+                                  <a route-href="route: cqt/:slug; params.bind: {slug: selectedCustomer.sql.server +
+                                    '$' +  selectedCustomer.sql.database + '$' + selectedCustomer.customerName + '$' + selectedCustomer.domainName}" class="navbar-item" mouseup.trigger="genericToggle('showSpecificDropDown')">
+                                  Contact Query
+                                  </a>
+                                  <a route-href="route: csc/:slug; params.bind: {slug: selectedCustomer.sql.server +
+                                    '$' +  selectedCustomer.sql.database + '$' + selectedCustomer.customerName + '$' + selectedCustomer.domainName}" class="navbar-item" mouseup.trigger="genericToggle('showSpecificDropDown')">
+                                  Campaign Monitor
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+
+         </div>
+         <button class="button mode-two-button" click.delegate="genericToggle('showCustomerModal')" class.bind="selectedCustomer.customerName ? '' : 'hidden'">${ selectedCustomer.customerName }</button>
+         <button class="button mode-two-button customer-button" click.delegate="genericToggle('showCustomerModal')" class.bind="selectedCustomer.customerName ? 'hidden' : ''">${ selectedCustomer }</button>
+
+         <div class="modal is-centered" class.bind="showCustomerModal ? 'is-active' : ''">
+            <div class="modal-background"></div>
+            <div class="modal-card is-">
+               <header class="modal-card-head">
+                  <p class="modal-card-title">Customer Select</p>
+                  <button class="delete" click.trigger="genericToggle('showCustomerModal')" aria-label="close"></button>
+               </header>
+               <section class="is-centered modal-card-body">
+                 <form>
+                  <p class="title is-6"> Start typing a customer name or domain name:</p>
+                  <input class="input selected-customer" list="customers" class="input" value.bind="customerInputDomain" keyup.trigger="searchForCustomersByDomain()">
+                  <datalist id="customers">
+                    <option repeat.for="customer of customerDisplayArray" value="${customer.customerName}" click.delegate="selectCustomer($event)">${customer.customerID}
+                  </datalist>
+                  <button class="button" click.delegate="selectCustomer($event)">Submit</button>
+                </form>
+               </section>
+            </div>
+         </div>
+
+         <div class="dropdown" class.bind="modeDropDown ? 'is-active' : ''">
+            <div class="dropdown-trigger">
+               <button class="button mode-button" click.delegate="genericToggle('modeDropDown')" aria-haspopup="true" aria-controls="dropdown-menu">
+               <span class="drop-down-text">${currentMode}</span>
+               <span class="icon is-small">
+               <i class="fas fa-angle-down" aria-hidden="true"></i>
+               </span>
+               </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu">
+               <div class="dropdown-content margin-right-dropdown">
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Default
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Alex
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Eric
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Gio
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Jana
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Jeacoma
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Jess
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Lexanne
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  Michael
+                  </a>
+                  <a class="dropdown-item" click.delegate="setMode($event)">
+                  TJ
+                  </a>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </nav>
+   <router-view click.delegate="turnOffAllToggles()"></router-view>
+</template>

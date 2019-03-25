@@ -1,0 +1,487 @@
+/*----- GLOBAL STYLES ----- */
+
+.is-selected {
+
+}
+
+html {
+  height: 100%;
+  background: #0B486B;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F56217, #0B486B);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F56217, #0B486B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+td:hover {
+  cursor: pointer;
+}
+
+.card-header:hover {
+  cursor: pointer;
+}
+
+.gradient {
+  background: #0B486B;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F56217, #0B486B);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F56217, #0B486B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+i.fas:hover{
+  color: #1a2a6c !important;
+}
+
+hr {
+  height: 2.5px;
+  width: 80%;
+  margin: 20px auto;
+  background: grey;  /* fallback for old browsers */
+}
+
+.cont {
+  max-width: 1200px !important;
+  margin: 20px auto;
+  word-wrap: break-word !important;
+}
+
+.is-danger {
+  word-break: break-all !important;
+}
+
+input {
+  width: 400px !important;
+  text-align: center !important;
+}
+
+.button {
+  display: block !important;
+  margin: 10px auto !important;
+}
+
+.card:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.box {
+  border-radius: 1px !important;
+}
+
+.box {
+  margin: 15px auto !important;
+  margin-bottom: 15px !important;
+  width: 90% !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card{
+  width: 90%;
+  margin: 15px auto;
+}
+
+h2 {
+  font-size: 140%;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.title.is-5 {
+  margin-bottom: 5px;
+}
+/*----- END GLOBAL CLASS STYLES ----- */
+/* -------------------------------------------------------------------------------- */
+/*----- BEGIN RE-UASBLE CLASS STYLES ----- */
+
+.margin-auto {
+  margin: auto !important;
+}
+
+.margin-top {
+  margin-top: 10px !important;
+}
+
+.margin-top-extra {
+  margin-top: 20px;
+}
+
+.margin-top-major {
+  margin-top: 40px;
+}
+
+.margin-bot {
+  margin-bottom: 2px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.white {
+  color: white !important;
+}
+
+.is-bold {
+  font-weight: bold;
+  margin-bottom: 2px !important;
+}
+
+.title-no-margin {
+  margin-bottom: 2px !important;
+}
+
+.margin-bottom {
+  margin-bottom: 10px;
+}
+
+.padding-left {
+  padding-left: 5px;
+}
+
+.is-centered {
+  text-align: center !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.width-ninty-five{
+  width: 95% !important;
+}
+
+.margin-five {
+  margin: 5px !important;
+}
+/*----- END RE-UASBLE STYLES ----- */
+/* -------------------------------------------------------------------------------- */
+/*-----BEGIN NAV BAR STYLES ----- */
+.logo-padding {
+  padding-top: 0px !important;
+  padding-bottom: 10px !important;
+}
+
+nav {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.margin-right-dropdown {
+  margin-right: 28px !important
+}
+
+.dropdown-content{
+  text-align: center !important;
+}
+
+.version {
+  padding-right: 8px;
+  line-height: 50px;
+}
+
+.logo {
+  display: -webkit-inline-box !important;
+}
+
+.toggle-button{
+  display: inline-block !important;
+  width: auto !important;
+  margin: 0px !important;
+}
+
+.mode-button{
+  width: 150px !important;
+  margin: 7px 10px !important;
+}
+
+.reset-button{
+  height: 19px !important;
+  line-height: 5px !important;
+  margin: 0px !important;
+}
+
+.mode-two-button{
+  margin: 7px 10px !important;
+}
+
+.selected {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+/*-----END NAV BAR STYLES ----- */
+/* -------------------------------------------------------------------------------- */
+/*-----BEGIN TABLE STYLES ----- */
+table {
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  font-size: 12px !important;
+}
+
+th{
+  background: #555;
+  color: #FFF !important;
+}
+
+.table-margin {
+  margin: 0px !important
+}
+
+.cqt-results {
+  overflow: scroll !important;
+}
+
+.table-cont {
+  width:49% !important;
+  display: inline-block;
+  overflow: hidden !important;
+}
+
+#exportTable {
+  font-size: 12px !important;
+  margin: 0 auto;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+/*-----END TABLE STYLES ----- */
+/* -------------------------------------------------------------------------------- */
+/*-----BEGIN PAGE SPECIFIC STYLES ----- */
+button.excel-button {
+  display: inline-block !important;
+  margin: 0px 0px 0px 70px !important;
+}
+
+.input-line-height {
+  line-height: 31px;
+  font-size: 18px;
+  padding-right: 15px;
+  display: inline-block;
+  width: 240px;
+  margin: 5px;
+}
+
+.table-cont {
+  max-height: 650px;
+  overflow: scroll;
+}
+
+.modal-card-body {
+  text-align: center !important;
+}
+
+.code {
+  line-height: 20px;
+  max-width: 1100px;
+}
+
+.companies {
+  display: inline-block;
+}
+
+.values-cont {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.false {
+	height: 25px;
+	width: 54px !important;
+    background: linear-gradient(147deg, #f71735 0%, #db3445 74%);    color: white;
+    padding: 0px 8px 0px 8px;
+    width: 49px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.true {
+	height: 25px;
+	width: 54px !important;
+    background: linear-gradient(147deg, #0BAB64 0%, #3BB78F 74%);
+    color: white;
+    padding: 0px 8px 0px 10px;
+    width: 49px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+}
+
+.table td{
+  border: 0px !important;
+  border-collapse:collapse !important;
+}
+
+.warning-table {
+  width: 180px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+  background: linear-gradient(315deg, #fbb034 0%, #ffdd00 74%);
+  color: white !important;
+}
+
+.true-table {
+  width: 180px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+  background: linear-gradient(147deg, #0BAB64 0%, #3BB78F 74%);
+  color: white !important;
+}
+
+.false-table {
+  width: 180px;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-align: center;
+  background: linear-gradient(147deg, #f71735 0%, #db3445 74%);
+  color: white !important;
+}
+
+.results {
+  width: 510px !important;
+  margin: 0 auto;
+}
+
+.results-cont {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.btn.btn-blue {
+  display: none;
+}
+
+.result div {
+  display: none;
+}
+
+.loading{
+  display: -webkit-inline-box !important;
+}
+
+.button.update-button {
+  margin: 7px 10px 0px 0px !important;
+}
+
+.customer-info {
+  white-space: pre-line !important;
+}
+
+.download-to-excel {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: absolute;
+  top: 315px;
+  border-radius: 2px;
+}
+/*-----END PAGE SPECIFIC STYLES ----- */
+
+/*-----MODE SPECIFIC STYLES ----- */
+
+.Default {
+  background: #0B486B;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(135deg, #F56217, #2768c7 );  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(135deg, #F56217, #2768c7 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.TJ {
+  background: #6d50a2 ;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6d50a2 , #ed2b88 );  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6d50a2, #ed2b88 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Michael {
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Jess {
+  background: #44A08D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Alex {
+  background: -webkit-linear-gradient(to bottom, #FFFFFF, #00966E, #D62612);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #FFFFFF, #00966E, #D62612); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Gio {
+  background: #5433FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Jeacoma {
+  background: #ee0979;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Eric {
+  background: #0575E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #021B79, #0575E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #021B79, #0575E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Lexanne {
+  background: #59C173;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5D26C1, #a17fe0, #59C173);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5D26C1, #a17fe0, #59C173); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.Jana {
+  background: #DAE2F8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/*-----END MODE SPECIFIC STYLES ----- */
+
+/*-----BEGIN MODAL SPECIFIC STYLES ----- */
+
+.modal-card-title {
+  color: white !important;
+}
+
+.modal-block {
+  margin: 10px;
+}
+
+.modal-button {
+  margin: 5px auto !important;
+}
+
+.modal-card {
+  width: 750px;
+}
+
+.modal-card-foot {
+  padding: 0px;
+}
+
+/*-----END MODAL SPECIFIC STYLES ----- */
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.dropdown-button {
+  margin: 8px !important;
+}
+
+.tool-text {
+  line-height: 35px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.num-input {
+  width: 100px !important;
+}
+
+a.dropdown-item {
+ padding-right: 0px !important;
+ padding-left: 0px !important;
+ text-align: center;
+}
+
+.message.is-danger.message-header{
+  width: 90% !important;
+}

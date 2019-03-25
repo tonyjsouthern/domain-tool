@@ -1,0 +1,250 @@
+<template>
+   <div class="cont margin-top-extra animated fadeIn faster">
+      <div class="card">
+         <div class="card-content animated fadeIn faster">
+            <div class="content">
+               <p class="is-bold">Welcome ya SF'ers!</p>
+               <p>The idea for this application is to build tools that make our lives here at Salesfusion a little easier! Below is a description of each tool and what functions it can perform/how it works.
+                  If you have suggestions for other tools you would like to see built or bug reports/ways to improve this tool please send an email to tj.southern@salesfusion.com (or walk over to my desk :D)
+               </p>
+               <p class="is-bold">Customer Specific Tools</p>
+               <p>Some tools will reference a specific customer and will not allow for user input. These tools are listed under the "Customer-Specific" dropdown menu. To select
+                  a customer for usage in these tools, simply click the button in the naviation bar and click on the desired customer. The selected customer will then be display in the button you clicked.
+               </p>
+               <p class="is-bold">VPN Access</p>
+               <p>This tool will only be available for usage within the Salesfusion office unless you have VPN access. This tool will not work on any network that does not belong to Salesfusion.</p>
+            </div>
+         </div>
+      </div>
+      <!--Begin Tracking Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('trackingScript')">
+            <p class="card-header-title">
+               Tracking Script
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="trackingScript ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What does this application do?</p>
+               <p>This application takes a given website and checks to see if the following companies tracking scripts are present. If a tracking script is found a "true" value will be returned, otherwise the value will default to false.</p>
+               <p class="is-bold margin-top">How does this application check for tracking scripts?</p>
+               <p>This application uses http and https methods to load a websites HTML. It then scans the entire websites HTMl for common keywords found in tracking scripts. It will
+               also perform a check to see if Google Tag Manager is being used. If so it will query the Tag Manager script as well.</p>
+               <p class="is-bold margin-top">Scripts this tool checks for:</p>
+               <p>Salesfusion, Click Dimensions, Pardot, Marketo, Hubspot, Google, Google Tag Manager
+               </p>
+            </div>
+      </div>
+      </div>
+      <!--End Tracking Script -->
+      <!--Begin DKIM Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('dkim')">
+            <p class="card-header-title">
+               SPF/DKIM
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="dkim ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What does this application do?</p>
+               <p>This application pulls the spf and dkim records for the domain provided. It will pull all SPF records that begin with a v-record and the lone DKIM record. </p>
+               <p class="is-bold margin-top">How does this application check to see if the DKIM/SPF records match?</p>
+               <p>It will first pull all SPF records for the domain provided that begin with a v-record. It will then check each to see if the string contains "auth.msgapp.com". If multiple SPF records are found one may still match but the overall result will return an error. After the SPF check is complete it will pull the DKIM record and directly compare it against the default Salesfusion DKIM record.</p>
+            </div>
+         </div>
+      </div>
+      <!--End DKIM Script -->
+      <!--Begin CNAME Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('cname')">
+            <p class="card-header-title">
+               Salesfusion CNAME Checker
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="cname ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">Salesfusion CNAME Checker</p>
+               <p>This queries against the Salesfusion database for a domain name. It then pulls all related CNAMEs to this domain and resolves them. It will then output in a table the results of the lookup.</p>
+               <p class="is-bold margin-top">Singular CNAME Checker</p>
+               <p>This application simply runs an http lookup to see what a given domain resolves to.</p>
+            </div>
+         </div>
+      </div>
+      <!--End CNAME Script -->
+      <!--Begin CNAME Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('whoIs')">
+            <p class="card-header-title">
+               Who Is?
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="whoIs ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What does this application do?</p>
+               <p> This application uses a third party API to perform a "Who Is" lookup on the given domain. It will return common infomrmation about the domains registry.</p>
+            </div>
+         </div>
+      </div>
+      <!--End CNAME Script -->
+      <!--Begin Rakesh Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('rakesh')">
+            <p class="card-header-title">
+               Admin Tool
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="rakesh ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What is this?</p>
+               <p> This tool has been built and is maintained by Rakesh. This is a general tool for customer information and will eventually replace all functionality found in the current Admin Controller. Any suggestions for improvement should be directed towards Rakesh (rakesh.alladi@salesfusion.com).
+                  All updates made to his tool will be reflected here once browser cache has been cleared.
+               </p>
+            </div>
+         </div>
+      </div>
+      <!--End Rakesh Script -->
+      <!--Begin Tracking Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('drt')">
+            <p class="card-header-title">
+               Deliverability Reset
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="drt ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What is this tool?</p>
+               <p>
+                 This tool allows a user to search a specific customers database for an email address. Information regarding that records deliverability standing is returned.
+                 If there are any issues with deliverability you can correct them by clicking the corresponding "Reset" button.
+               </p>
+               <p class="is-bold">Notes:</p>
+                 For all tables there will be a corresponding message placed into a secondary field if a record is updated by this tool. Below is a key of what tables and fields will be populated:
+                 <br>
+                 <p class="is-bold margin-top-extra">Tables and fields that will be updated:</p>
+                 <table class="drt-table table is-striped is-fullwidth is-narrow animated fadeIn faster">
+                    <thead>
+                       <th>Tool:</th>
+                       <th>Table:</th>
+                       <th>Fields</th>
+                    </thead>
+                    <tr>
+                       <td class="is-bold">Delete</td>
+                       <td>Contacts</td>
+                       <td>DeleteDate, Description</td>
+                    </tr>
+                    <tr>
+                       <td class="is-bold">Guarded Watch</td>
+                       <td>SubscriberListEmails</td>
+                       <td>Status, Reason</td>
+                    </tr>
+                    <tr>
+                       <td class="is-bold">Hard Bounce</td>
+                       <td>EmailDeliveryStatus</td>
+                       <td>Entire Row</td>
+                    </tr>
+                    <tr>
+                       <td class="is-bold">Soft Bounce</td>
+                       <td>SystemSoftBounce</td>
+                       <td>Entire Row</td>
+                    </tr>
+                    <tr>
+                       <td class="is-bold">OptOut</td>
+                       <td>Contacts</td>
+                       <td>OpOut, Assistantname</td>
+                    </tr>
+                    <tr>
+                       <td class="is-bold">Supression</td>
+                       <td>SubscriberListEmails</td>
+                       <td>Status, Reason</td>
+                    </tr>
+                    <tr>
+                       <td class="is-bold">Email Validation</td>
+                       <td>EmailValidation</td>
+                       <td>Status, DeletedReason</td>
+                    </tr>
+                    </table>
+
+            </div>
+         </div>
+      </div>
+      <!--End Tracking Script -->
+
+      <!--Begin CQT Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('cqt')">
+            <p class="card-header-title">
+              Contact Query
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="cqt ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What is this?</p>
+               <p> This tool takes input of an email address and returns useful information regarding the specified record. This is data generally only available via SQL access.</p>
+               <p class="is-bold">Can you add a column?</p>
+               <p> This tool aims to be customer ambigious and work across the board. As such only standard fields can be added/removed.</p>
+            </div>
+         </div>
+      </div>
+      <!--End CQT Script -->
+
+      <!--Begin Campaign Monitor Script -->
+      <div class="card margin-top">
+         <header class="card-header" click.delegate="genericToggle('campaignMonitor')">
+            <p class="card-header-title">
+              Campaign Monitor
+            </p>
+            <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+            </a>
+         </header>
+         <div class="card-content animated fadeIn faster" class.bind="campaignMonitor ? '' : 'hidden'">
+            <div class="content">
+               <p class="is-bold">What is this?</p>
+               <p>This tool allows you to set a timer and auto-refresh campaign statistics. It will provide a completion percentage once the campaign has completed staging and the timer is turned on.</p>
+               <p class="is-bold">Global Timeout</p>
+               <p>There is a global timeout of 15 minutes. All timers will stop running after fifteen minutes and be switched to the "OFF" state.</p>
+               <p class="is-bold">Timer Values:</p>
+               <p>The minimum time-frame for a timer is a refresh 15 seconds. There is currently no ceiling on how high you set the timer.</p>
+            </div>
+         </div>
+      </div>
+      <!--End Campaign Monitor Script -->
+   </div>
+</template>
