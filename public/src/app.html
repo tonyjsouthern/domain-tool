@@ -16,7 +16,8 @@
                     <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
                       <span>DNS</span>
                       <span class="icon is-small">
-                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        <i class="fas fa-angle-down" class.bind="showDnsDropDown ? 'hidden' : ''" aria-hidden="true"></i>
+                        <i class="fas fa-angle-up" class.bind="showDnsDropDown ? '' : 'hidden'" aria-hidden="true"></i>
                       </span>
                     </button>
                   </div>
@@ -43,7 +44,8 @@
                                 <button class="button dropdown-button" aria-haspopup="true" aria-controls="dropdown-menu">
                                   <span>Customer Specific</span>
                                   <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    <i class="fas fa-angle-down" class.bind="showSpecificDropDown ? 'hidden' : ''" aria-hidden="true"></i>
+                                    <i class="fas fa-angle-up" class.bind="showSpecificDropDown ? '' : 'hidden'" aria-hidden="true"></i>
                                   </span>
                                 </button>
                               </div>
@@ -78,7 +80,7 @@
                </header>
                <section class="is-centered modal-card-body">
                  <form>
-                  <p class="title is-6"> Start typing a customer name or domain name:</p>
+                  <p class="title is-6"> Start typing a customer name:</p>
                   <input class="input selected-customer" list="customers" class="input" value.bind="customerInputDomain" keyup.trigger="searchForCustomersByDomain()">
                   <datalist id="customers">
                     <option repeat.for="customer of customerDisplayArray" value="${customer.customerName}" click.delegate="selectCustomer($event)">${customer.customerID}
@@ -94,7 +96,8 @@
                <button class="button mode-button" click.delegate="genericToggle('modeDropDown')" aria-haspopup="true" aria-controls="dropdown-menu">
                <span class="drop-down-text">${currentMode}</span>
                <span class="icon is-small">
-               <i class="fas fa-angle-down" aria-hidden="true"></i>
+               <i class="fas fa-angle-down" class.bind="modeDropDown ? 'hidden' : ''" aria-hidden="true"></i>
+               <i class="fas fa-angle-up" class.bind="modeDropDown ? '' : 'hidden'" aria-hidden="true"></i>
                </span>
                </button>
             </div>

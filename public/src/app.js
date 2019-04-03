@@ -33,6 +33,7 @@ export class App {
   this.showSpecificDropDown = false;
   this.showDnsDropDown = false;
  	this.showCustomerModal = false;
+  this.dnsArrow = false;
  	this.currentMode = "Select a Mode"
 
  	this.customerArray = [];
@@ -104,7 +105,6 @@ turnOffAllToggles(){
 }
 
 genericToggle(attribute) {
-  console.log(attribute)
   if ( attribute == 'modeDropDown') {
     if(this[attribute] == false){
       this[attribute] = true;

@@ -24,7 +24,8 @@
             </p>
             <a class="card-header-icon" aria-label="more options">
               <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="fas fa-angle-down" class.bind="showAllText ? 'hidden' : ''"aria-hidden="true"></i>
+                <i class="fas fa-angle-up" class.bind="showAllText ? '' : 'hidden'" aria-hidden="true"></i>
               </span>
             </a>
           </header>
@@ -44,7 +45,8 @@
             </p>
             <a class="card-header-icon" aria-label="more options">
               <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="fas fa-angle-up" class.bind="showCheckerResults ? '' : 'hidden'" aria-hidden="true"></i>
+                <i class="fas fa-angle-down" class.bind="showCheckerResults ? 'hidden' : ''"  aria-hidden="true"></i>
               </span>
             </a>
           </header>
@@ -99,7 +101,8 @@
                 </p>
                 <a class="card-header-icon" aria-label="more options">
                 <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="fas fa-angle-down" class.bind="showExamples ? 'hidden' : ''"  aria-hidden="true"></i>
+                <i class="fas fa-angle-up" class.bind="showExamples ? '' : 'hidden'" aria-hidden="true"></i>
               </span>
             </a>
           </header>

@@ -26,7 +26,8 @@
             </p>
             <a class="card-header-icon" aria-label="more options" >
             <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            <i class="fas fa-angle-down"class.bind="showDomainInfo ? 'hidden' : ''"   aria-hidden="true"></i>
+            <i class="fas fa-angle-up" class.bind="showDomainInfo ? '' : 'hidden'" aria-hidden="true"></i>
             </span>
             </a>
          </header>
@@ -67,7 +68,8 @@
              </p>
              <a class="card-header-icon" aria-label="more options" >
              <span class="icon">
-             <i class="fas fa-angle-down" aria-hidden="true"></i>
+             <i class="fas fa-angle-down" class.bind="showMxInfo ? 'hidden' : ''" aria-hidden="true"></i>
+             <i class="fas fa-angle-up" class.bind="showMxInfo ? '' : 'hidden'" aria-hidden="true"></i>
              </span>
              </a>
           </header>
@@ -96,7 +98,8 @@
               </p>
               <a class="card-header-icon" aria-label="more options" >
               <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="fas fa-angle-down" class.bind="showRegisterInfo ? 'hidden' : ''" aria-hidden="true"></i>
+                <i class="fas fa-angle-up" class.bind="showRegisterInfo ? '' : 'hidden'" aria-hidden="true"></i>
               </span>
               </a>
            </header>
@@ -141,7 +144,8 @@
                </p>
                <a class="card-header-icon" aria-label="more options" >
                <span class="icon">
-               <i class="fas fa-angle-down" aria-hidden="true"></i>
+                 <i class="fas fa-angle-down" class.bind="showNameServerInfo ? 'hidden' : ''" aria-hidden="true"></i>
+                 <i class="fas fa-angle-up" class.bind="showNameServerInfo ? '' : 'hidden'" aria-hidden="true"></i>
                </span>
                </a>
             </header>

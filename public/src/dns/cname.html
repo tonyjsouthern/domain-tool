@@ -10,7 +10,8 @@
             </p>
             <a class="card-header-icon" aria-label="more options">
             <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true" ></i>
+            <i class="fas fa-angle-down" class.bind="showSfChecker ? 'hidden' : ''" aria-hidden="true" ></i>
+            <i class="fas fa-angle-up" class.bind="showSfChecker ? '' : 'hidden'" aria-hidden="true"></i>
             </span>
             </a>
          </header>
@@ -20,7 +21,7 @@
                <form>
                   <div class="dkim-cont is-centered">
                      <p class="title is-6 ">Enter a current Salesfusion customer domain name:</p>
-                     <input class="input" value.bind="cname" placeholder="acme.com">
+                     <input class="input" value.bind="cname" placeholder="automate">
                      <button class="submit-button button" click.delegate="checkCname()">Submit</button>
                   </div>
                </form>
@@ -67,7 +68,8 @@
             </p>
             <a class="card-header-icon" aria-label="more options">
             <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
+            <i class="fas fa-angle-down" class.bind="showSinglularChecker ? 'hidden' : ''" aria-hidden="true"></i>
+            <i class="fas fa-angle-up" class.bind="showSinglularChecker ? '' : 'hidden'" aria-hidden="true"></i>
             </span>
             </a>
          </header>
