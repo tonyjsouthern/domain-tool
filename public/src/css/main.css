@@ -1,7 +1,12 @@
 /*----- GLOBAL STYLES ----- */
 
-.is-selected {
+button{
+  box-shadow: none !important;
+  outline: black !important;
+}
 
+a:hover {
+  color: black !important;
 }
 
 html {
