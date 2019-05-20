@@ -17,7 +17,7 @@
          </div>
       </div>
       <!--Begin Tracking Script -->
-      <div class="card margin-top">
+      <div class="card margin-top animated slideIn">
          <header class="card-header" click.delegate="genericToggle('trackingScript')">
             <p class="card-header-title">
                Tracking Script
@@ -29,8 +29,8 @@
             </span>
             </a>
          </header>
-         <div class="card-content animated fadeIn faster" class.bind="trackingScript ? '' : 'hidden'">
-            <div class="content">
+         <div class="card-content" class.bind="trackingScript ? '' : 'hidden'">
+            <div class="content animated fadeIn faster">
                <p class="is-bold">What does this application do?</p>
                <p>This application takes a given website and checks to see if the following companies tracking scripts are present. If a tracking script is found a "true" value will be returned, otherwise the value will default to false.</p>
                <p class="is-bold margin-top">How does this application check for tracking scripts?</p>

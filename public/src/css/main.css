@@ -1,5 +1,13 @@
 /*----- GLOBAL STYLES ----- */
 
+.hidden {
+ display: none !important;
+}
+
+button.hidden {
+ display: none !important;
+}
+
 button{
   box-shadow: none !important;
   outline: black !important;
@@ -114,9 +122,6 @@ h2 {
   margin-bottom: 2px;
 }
 
-.hidden {
-  display: none !important;
-}
 
 .white {
   color: white !important;
